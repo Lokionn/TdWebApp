@@ -22,7 +22,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
-<title>Ajout User</title>
+<title>Ajout Employee</title>
 </head>
 <body>
 
@@ -73,7 +73,7 @@
 										class="col-md-4 col-form-label text-md-right">Title </label>
 									<div class="col-md-6">
 										<input type="text" id="title" class="form-control"
-											name="title" required autofocus value="${emp.title}">
+											name="title" autofocus value="${emp.title}">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -82,7 +82,7 @@
 										class="col-md-4 col-form-label text-md-right">Assigned Branch ID en entier </label>
 									<div class="col-md-6">
 										<input type="text" id="assignedbranchid" class="form-control"
-											name="assignedbranchid" required autofocus value="${emp.assignedbranchid}">
+											name="assignedbranchid" autofocus value="${emp.assignedbranchid}">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -91,7 +91,7 @@
 										class="col-md-4 col-form-label text-md-right">Dept id en entier</label>
 									<div class="col-md-6">
 										<input type="text" id="assignedbranchid" class="form-control"
-											name="deptid" required autofocus value="${emp.deptid}">
+											name="deptid" autofocus value="${emp.deptid}">
 									</div>
 								</div>
 								
@@ -101,7 +101,7 @@
 										class="col-md-4 col-form-label text-md-right">Superior Emp id en entier</label>
 									<div class="col-md-6">
 										<input type="text" id="superiorempid" class="form-control"
-											name="superiorempid" required autofocus value="${emp.superiorempid}">
+											name="superiorempid" autofocus value="${emp.superiorempid}">
 									</div>
 								</div>
 

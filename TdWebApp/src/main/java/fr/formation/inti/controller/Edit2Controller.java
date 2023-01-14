@@ -87,10 +87,32 @@ public class Edit2Controller extends HttpServlet {
 		
 		employee.setFirstname(firstname);
 		employee.setLastname(lastname);
+		
+		
+		if (title!="") {
 		employee.setTitle(title);
+		}
+		else {
+			employee.setTitle(null);
+		}
+		if (superiorempid != "") {
 		employee.setSuperiorempid(Integer.parseInt(superiorempid));
+		}
+		else {
+			employee.setSuperiorempid(null);
+		}
+		if (assignedbranchid!="") {
 		employee.setAssignedbranchid(Integer.parseInt(assignedbranchid));
+		}
+		else {
+			employee.setAssignedbranchid(null);
+		}
+		if (deptid!="") {
 		employee.setDeptid(Integer.parseInt(deptid));
+		}
+		else {
+			employee.setDeptid(null);	
+		}
 		
 		employeeService.update(employee);
 		List<Employee> list = employeeService.findAll();

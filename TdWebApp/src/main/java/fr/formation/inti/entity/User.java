@@ -30,7 +30,11 @@ public class User implements java.io.Serializable {
 	private String firstname ;
 	private String lastname;
 	private LocalDateTime datecrea;
+	private Integer adminbool;
 	
+
+	
+
 
 	public User() {
 	}
@@ -119,6 +123,16 @@ public class User implements java.io.Serializable {
 		this.datecrea = datecrea;
 	}
 
+	
+	@Column(name = "adminbool", nullable = false)
+	public Integer isAdminbool() {
+		return adminbool;
+	}
+
+
+	public void setAdminbool(Integer adminbool) {
+		this.adminbool = adminbool;
+	}
 
 	@Override
 	public String toString() {

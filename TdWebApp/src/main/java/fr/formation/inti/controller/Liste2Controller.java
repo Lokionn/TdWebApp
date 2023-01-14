@@ -22,45 +22,51 @@ import fr.formation.inti.service.EmployeeServiceImpl;
 @WebServlet("/liste2")
 public class Liste2Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private EmployeeService employeeService;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Liste2Controller() {
-        employeeService = new EmployeeServiceImpl();
-    }
+	private EmployeeService employeeService;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public Liste2Controller() {
+		employeeService = new EmployeeServiceImpl();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		HttpSession session = request.getSession(false);
-		if(session != null) {
-			
+		if (session != null) {
 
 			List<Employee> list = employeeService.findAll();
 			request.setAttribute("employees", list);
-			request.getServletContext().getRequestDispatcher("/liste2.jsp").forward(request, response);
-			
-		} else {
-			
-		request.setAttribute("error", "Vous n'êtes pas connecté ! Faites les choses dans l'ordre :D!");
+			User userActif = (User) session.getAttribute("user");
+			if (userActif.isAdminbool() == 1) {
 
-		
-		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
-		
-		dispatcher.forward(request, response);
+				request.getServletContext().getRequestDispatcher("/liste2.jsp").forward(request, response);
+			} else {
+				request.getServletContext().getRequestDispatcher("/liste2b.jsp").forward(request, response);
+			}
+		} else {
+
+			request.setAttribute("error", "Vous n'êtes pas connecté ! Faites les choses dans l'ordre :D!");
+
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
+
+			dispatcher.forward(request, response);
 		}
-		
-		
-		}
+
+	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

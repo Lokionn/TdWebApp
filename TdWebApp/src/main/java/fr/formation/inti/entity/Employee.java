@@ -44,8 +44,8 @@ public class Employee implements java.io.Serializable {
 	}
 
 
-	public Employee(String firstname2, String lastname2, String title2, int superiorempid2, int assignedbranchid2,
-			int deptid2) {
+	public Employee(String firstname2, String lastname2, String title2, Integer superiorempid2, Integer assignedbranchid2,
+			Integer deptid2) {
 		this.assignedbranchid=assignedbranchid2;
 		this.deptid=deptid2;
 		this.firstname=firstname2;

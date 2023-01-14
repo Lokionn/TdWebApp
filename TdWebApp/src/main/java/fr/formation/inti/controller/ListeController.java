@@ -23,42 +23,52 @@ public class ListeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserService userService;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ListeController() {
-		userService = new UserServiceImpl();
-    }
-
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-
-		HttpSession session = request.getSession(false);
-		if(session != null) {
-			
-			List<User> list = userService.findAll();
-			request.setAttribute("users", list);
-			request.getServletContext().getRequestDispatcher("/liste.jsp").forward(request, response);
-		
-		} else {
-			
-		request.setAttribute("error", "Vous n'êtes pas connecté ! Faites les choses dans l'ordre :D!");
-
-		
-		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
-		
-		dispatcher.forward(request, response);
-		}
-		
+	public ListeController() {
+		userService = new UserServiceImpl();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		HttpSession session = request.getSession(false);
+
+		if (session != null) {
+
+			User userActif = (User) session.getAttribute("user");
+			List<User> list = userService.findAll();
+			request.setAttribute("users", list);
+			if (userActif.isAdminbool() == 1) {
+
+				request.getServletContext().getRequestDispatcher("/liste.jsp").forward(request, response);
+			} else {
+
+				request.getServletContext().getRequestDispatcher("/listeb.jsp").forward(request, response);
+
+			}
+		} else {
+
+			request.setAttribute("error", "Vous n'êtes pas connecté ! Faites les choses dans l'ordre :D!");
+
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
+
+			dispatcher.forward(request, response);
+		}
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
