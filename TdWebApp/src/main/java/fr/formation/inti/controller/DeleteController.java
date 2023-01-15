@@ -23,67 +23,71 @@ public class DeleteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserService userService;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeleteController() {
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public DeleteController() {
 		userService = new UserServiceImpl();
 
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-
-		HttpSession session = request.getSession(false);
-		if(session != null) {
-			String email = request.getParameter("email");
-			
-			User user = userService.findByEmail(email);
-			
-			if (user!=null) {
-				userService.delete(user);
-				List<User> list = userService.findAll();
-				request.setAttribute("users", list);
-				request.getServletContext().getRequestDispatcher("/liste.jsp").forward(request, response);
-			}
-		} else {
-			
-		request.setAttribute("error", "Vous n'êtes pas connecté ! Faites les choses dans l'ordre :D!");
-
-		
-		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
-		
-		dispatcher.forward(request, response);
-		}
-			
-		
-	
-		
-		
-		
-		
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			String email = request.getParameter("email");
+
+			User user = userService.findByEmail(email);
+
+			if (user != null) {
+				userService.delete(user);
+
+				User userActif = (User) session.getAttribute("user");
+
+				if (userActif.getUserId() == user.getUserId()) {
+					session.invalidate();
+					response.sendRedirect(request.getContextPath());
+				} else {
+
+					List<User> list = userService.findAll();
+					request.setAttribute("users", list);
+					request.getServletContext().getRequestDispatcher("/liste.jsp").forward(request, response);
+				}
+			}
+		} else {
+
+			request.setAttribute("error", "Vous n'êtes pas connecté ! Faites les choses dans l'ordre :D!");
+
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
+
+			dispatcher.forward(request, response);
+		}
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String email = request.getParameter("email");
-		
+
 		User user = userService.findByEmail(email);
-		
-		if (user!=null) {
+
+		if (user != null) {
 			userService.delete(user);
 			List<User> list = userService.findAll();
 			request.setAttribute("users", list);
 			request.getServletContext().getRequestDispatcher("/liste.jsp").forward(request, response);
 		}
-		
+
 		response.getWriter().append("User not found ").append(request.getContextPath());
 	}
-	
 
 }
