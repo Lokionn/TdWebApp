@@ -41,12 +41,12 @@ public class LoginController extends HttpServlet {
 		if(session != null) {
 //			List<User> list = userService.findAll();
 //			request.setAttribute("users", list);
-			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/connected.jsp");
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/connected.jsp");
 			
 			dispatcher.forward(request, response);
 		} else {
 		
-		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
 		
 		dispatcher.forward(request, response);
 		}
@@ -70,10 +70,10 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("user", user);
 //			List<User> list = userService.findAll();
 //			request.setAttribute("users", list);
-			request.getServletContext().getRequestDispatcher("/connected.jsp").forward(request, response);
+			request.getServletContext().getRequestDispatcher("/WEB-INF/connected.jsp").forward(request, response);
 		} else {
 			request.setAttribute("error", "email or password error !");
-			request.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+			request.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
 		}
 
 	}

@@ -45,12 +45,12 @@ public class EditController extends HttpServlet {
 			
 			if (user!=null) {
 				request.setAttribute("user", user);
-				request.getServletContext().getRequestDispatcher("/edit.jsp").forward(request, response);
+				request.getServletContext().getRequestDispatcher("/WEB-INF/edit.jsp").forward(request, response);
 			}
 		
 			else{
 				request.setAttribute("error", "Il faut cliquer sur le bouton edit d'une ligne pour accéder à cette commande!");
-				request.getServletContext().getRequestDispatcher("/connected.jsp").forward(request, response);
+				request.getServletContext().getRequestDispatcher("/WEB-INF/connected.jsp").forward(request, response);
 			}
 		
 		} else {
@@ -58,7 +58,7 @@ public class EditController extends HttpServlet {
 		request.setAttribute("error", "Vous n'êtes pas connecté ! Faites les choses dans l'ordre :D!");
 
 		
-		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
 		
 		dispatcher.forward(request, response);
 		}
@@ -102,13 +102,13 @@ public class EditController extends HttpServlet {
 				request.getServletContext().getRequestDispatcher("/liste").forward(request, response);
 			}
 			else {request.setAttribute("error", "mots de passes différents !");
-			request.getServletContext().getRequestDispatcher("/connected.jsp").forward(request, response);
+			request.getServletContext().getRequestDispatcher("/WEB-INF/connected.jsp").forward(request, response);
 				
 			}
 
 		} else {
 			request.setAttribute("error", "email déjà utilisé on recommence	!");
-			request.getServletContext().getRequestDispatcher("/connected.jsp").forward(request, response);
+			request.getServletContext().getRequestDispatcher("/WEB-INF/connected.jsp").forward(request, response);
 
 		}
 

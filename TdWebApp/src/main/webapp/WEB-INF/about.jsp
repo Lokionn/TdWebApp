@@ -84,7 +84,7 @@
 			</p>
 			<!-- Use a button to pause/play the video with JavaScript -->
 			<button id="myBtn" onclick="myFunction()">Pause</button>
-			<button id="myBtn" onclick="myFunction2()">Bunch of cool stuff</button>
+		
 		</div>
 
 

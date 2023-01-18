@@ -44,19 +44,24 @@ public class ListeController extends HttpServlet {
 			User userActif = (User) session.getAttribute("user");
 			List<User> list = userService.findAll();
 			request.setAttribute("users", list);
+			if (userActif.isAdminbool()==null) {
+				userActif.setAdminbool(0);
+				//bricolage pcq j'arrive pas à mettre 0 par défaut et il voit pas le null
+				userService.update(userActif);
+			}
 			if (userActif.isAdminbool() == 1) {
 
-				request.getServletContext().getRequestDispatcher("/liste.jsp").forward(request, response);
+				request.getServletContext().getRequestDispatcher("/WEB-INF/liste.jsp").forward(request, response);
 			} else {
 
-				request.getServletContext().getRequestDispatcher("/listeb.jsp").forward(request, response);
+				request.getServletContext().getRequestDispatcher("/WEB-INF/listeb.jsp").forward(request, response);
 
 			}
 		} else {
 
 			request.setAttribute("error", "Vous n'êtes pas connecté ! Faites les choses dans l'ordre :D!");
 
-			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
 
 			dispatcher.forward(request, response);
 		}

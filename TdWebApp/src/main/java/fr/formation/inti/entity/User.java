@@ -124,7 +124,7 @@ public class User implements java.io.Serializable {
 	}
 
 	
-	@Column(name = "adminbool", nullable = false)
+	@Column(name = "adminbool")
 	public Integer isAdminbool() {
 		return adminbool;
 	}

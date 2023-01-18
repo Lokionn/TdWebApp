@@ -43,7 +43,7 @@ public class AjoutUser extends HttpServlet {
 		if(session != null) {
 			
 			
-			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/ajoutuser.jsp");
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/ajoutuser.jsp");
 
 			dispatcher.forward(request, response);
 		} else {
@@ -51,7 +51,7 @@ public class AjoutUser extends HttpServlet {
 		request.setAttribute("error", "Vous n'êtes pas connecté ! Faites les choses dans l'ordre :D!");
 
 		
-		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
 		
 		dispatcher.forward(request, response);
 		}
@@ -78,16 +78,16 @@ public class AjoutUser extends HttpServlet {
 //				HttpSession session = request.getSession();
 				List<User> list = userService.findAll();
 				request.setAttribute("users", list);
-				request.getServletContext().getRequestDispatcher("/liste.jsp").forward(request, response);
+				request.getServletContext().getRequestDispatcher("/WEB-INF/liste.jsp").forward(request, response);
 			}
 			else {request.setAttribute("error", "mots de passes différents !");
-			request.getServletContext().getRequestDispatcher("/ajoutuser.jsp").forward(request, response);
+			request.getServletContext().getRequestDispatcher("/WEB-INF/ajoutuser.jsp").forward(request, response);
 				
 			}
 
 		} else {
 			request.setAttribute("error", "email déjà utilisé !");
-			request.getServletContext().getRequestDispatcher("/ajoutuser.jsp").forward(request, response);
+			request.getServletContext().getRequestDispatcher("/WEB-INF/ajoutuser.jsp").forward(request, response);
 
 		}
 

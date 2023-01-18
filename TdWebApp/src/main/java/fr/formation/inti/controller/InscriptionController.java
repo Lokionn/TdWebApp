@@ -41,12 +41,12 @@ public class InscriptionController extends HttpServlet {
 		if(session != null) {
 			request.setAttribute("error", "Vous êtes déjà connecté ! Deconnectez vous si vous souhaitez vous inscrire autrement, ou bien passez par l'onglet ajout user.	!");
 			
-			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/connected.jsp");
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/connected.jsp");
 			
 			dispatcher.forward(request, response);
 		} else {
 		
-		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/inscription.jsp");
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp");
 		
 		dispatcher.forward(request, response);
 		}
@@ -73,16 +73,16 @@ public class InscriptionController extends HttpServlet {
 				session.setAttribute("user", user);
 				List<User> list = userService.findAll();
 				request.setAttribute("users", list);
-				request.getServletContext().getRequestDispatcher("/connected.jsp").forward(request, response);
+				request.getServletContext().getRequestDispatcher("/WEB-INF/connected.jsp").forward(request, response);
 			}
 			else {request.setAttribute("error", "mots de passes différents !");
-			request.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
+			request.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
 				
 			}
 
 		} else {
 			request.setAttribute("error", "email déjà utilisé !");
-			request.getServletContext().getRequestDispatcher("/inscription.jsp").forward(request, response);
+			request.getServletContext().getRequestDispatcher("/WEB-INF/inscription.jsp").forward(request, response);
 
 		}
 

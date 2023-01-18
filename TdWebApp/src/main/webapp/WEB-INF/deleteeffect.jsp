@@ -14,20 +14,20 @@
 <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600"
 	rel="stylesheet" type="text/css">
 
+<link rel="stylesheet" href="css/style.css">
+
 <link rel="icon" href="Favicon.png">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
 <!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-
-<link rel="stylesheet" href="css/style.css">
-
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css">
 
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
@@ -40,18 +40,18 @@
 
 
 
-<title>Connected</title>
-<body>
+<title>Good Bye Row</title>
+<body class="body2">
 
 
 	<main class="login-form">
 		<div class="topnav">
 			<a class="active" href="index2">Home</a> <a href="add">Ajouter
 				User</a> <a href="liste">Liste Users</a> <a href="add2">Ajouter
-				Employee</a> <a href="liste2">Liste Employees</a><a href="about">About</a>
+				Employee</a><a href="liste2">Liste Employees</a><a href="about">About</a>
 			<form action="logout" method="post">
 
-
+				<span style="color: red; font-size: 12px">${error }</span>
 
 				<button type="submit" class="btn btn-primary btndeco">Deconnection</button>
 				<br /> <br />
@@ -59,14 +59,9 @@
 
 			</form>
 		</div>
-		<br />
-		<div class="textco">Voici vos données, utilisez les avec
-			sagesse.</div>
-			
-			<br/>
-		<div class="textco">${error}</div>
-		<br />
-		<table class="table">
+
+		<table data-pagination="true" data-search="true" data-toggle="table"
+			data-page-list="[5, 10, 25, 50, 100, all]" class="table">
 			<thead>
 				<tr>
 					<th scope="col">User ID</th>
@@ -75,25 +70,70 @@
 					<th scope="col">Firstname</th>
 					<th scope="col">Lastname</th>
 					<th scope="col">DateCrea</th>
-					<th scope="col">Edit</th>
+
 				</tr>
 			</thead>
 			<tbody>
 				<tr class="rowhovered">
-					<td>${user.userId }</td>
-					<td>${user.email}</td>
-					<td>${user.password }</td>
-					<td>${user.firstname}</td>
-					<td>${user.lastname }</td>
-					<td>${user.datecrea }</td>
-					<td><a class="active" href="update?email=${user.email}"><i
-							class="fa-regular fa-pen-to-square"></i></a></td>
+					<td>Plic</td>
+					<td>plac</td>
+					<td>ploc</td>
+					<td>pluc</td>
+					<td>plek</td>
+					<td>pwak</td>
+
+				</tr>
+				<tr class="rowhovered">
+					<td>Plic</td>
+					<td>plac</td>
+					<td>ploc</td>
+					<td>pluc</td>
+					<td>plek</td>
+					<td>pwak</td>
+
+				</tr>
+				<tr class="rowhovered">
+					<td>Plic</td>
+					<td>plac</td>
+					<td>ploc</td>
+					<td>pluc</td>
+					<td>plek</td>
+					<td>
+						<div class="background-highlight"></div>
+						<div class="highlight"></div>
+						<p>pwak</p>
+						<div class="burn">
+							<div class="flame"></div>
+							<div class="flame"></div>
+							<div class="flame"></div>
+							<div class="flame"></div>
+							<div class="flame"></div>
+							<div class="flame"></div>
+							<div class="flame"></div>
+							<div class="flame"></div>
+							<div class="flame"></div>
+							<div class="flame"></div>
+						</div>
+					</td>
+
+				</tr>
+				<tr class="rowhovered">
+					<td>Plic</td>
+					<td>plac</td>
+					<td>ploc</td>
+					<td>pluc</td>
+					<td>plek</td>
+					<td> pwak</td>
 
 				</tr>
 			</tbody>
-
 		</table>
+
+
+
+
 	</main>
+
 
 </body>
 </html>

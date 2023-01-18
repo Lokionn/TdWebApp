@@ -35,16 +35,12 @@ public class IndexController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(false);
 		if(session != null) {
-//			User user;
-//			String email = (String) session.getAttribute("email");
-//			user = userService.findByEmail(email);
-//			request.setAttribute("user", user);
-			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/connected.jsp");
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/connected.jsp");
 			
 			dispatcher.forward(request, response);
 		} else {
 	
-		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
 		
 		dispatcher.forward(request, response);
 		}

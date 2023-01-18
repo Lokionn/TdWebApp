@@ -48,11 +48,11 @@ public class Edit2Controller extends HttpServlet {
 
 			if (employee != null) {
 				request.setAttribute("emp", employee);
-				request.getServletContext().getRequestDispatcher("/edit2.jsp").forward(request, response);}
+				request.getServletContext().getRequestDispatcher("/WEB-INF/edit2.jsp").forward(request, response);}
 			}
 			else{
 				request.setAttribute("error", "Il faut cliquer sur le bouton edit d'une ligne pour accéder à cette commande!");
-				request.getServletContext().getRequestDispatcher("/connected.jsp").forward(request, response);
+				request.getServletContext().getRequestDispatcher("/WEB-INF/connected.jsp").forward(request, response);
 			}
 		
 		} else {
@@ -60,7 +60,7 @@ public class Edit2Controller extends HttpServlet {
 		request.setAttribute("error", "Vous n'êtes pas connecté ! Faites les choses dans l'ordre :D!");
 
 		
-		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
 		
 		dispatcher.forward(request, response);
 		}
@@ -117,7 +117,7 @@ public class Edit2Controller extends HttpServlet {
 		employeeService.update(employee);
 		List<Employee> list = employeeService.findAll();
 		request.setAttribute("employees", list);
-		request.getServletContext().getRequestDispatcher("/liste2.jsp").forward(request, response);
+		request.getServletContext().getRequestDispatcher("/WEB-INF/liste2.jsp").forward(request, response);
 	}
 
 }

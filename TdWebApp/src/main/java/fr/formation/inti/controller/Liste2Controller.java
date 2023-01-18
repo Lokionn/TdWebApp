@@ -44,17 +44,22 @@ public class Liste2Controller extends HttpServlet {
 			List<Employee> list = employeeService.findAll();
 			request.setAttribute("employees", list);
 			User userActif = (User) session.getAttribute("user");
+			if (userActif.isAdminbool()==null) {
+				userActif.setAdminbool(0);
+				
+				//bricolage pcq j'arrive pas à mettre 0 par défaut et il voit pas le null
+			}
 			if (userActif.isAdminbool() == 1) {
 
-				request.getServletContext().getRequestDispatcher("/liste2.jsp").forward(request, response);
+				request.getServletContext().getRequestDispatcher("/WEB-INF/liste2.jsp").forward(request, response);
 			} else {
-				request.getServletContext().getRequestDispatcher("/liste2b.jsp").forward(request, response);
+				request.getServletContext().getRequestDispatcher("/WEB-INF/liste2b.jsp").forward(request, response);
 			}
 		} else {
 
 			request.setAttribute("error", "Vous n'êtes pas connecté ! Faites les choses dans l'ordre :D!");
 
-			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
 
 			dispatcher.forward(request, response);
 		}

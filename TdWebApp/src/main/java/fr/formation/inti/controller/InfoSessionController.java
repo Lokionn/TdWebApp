@@ -44,15 +44,15 @@ public class InfoSessionController extends HttpServlet {
 			
 			session.setMaxInactiveInterval(1800);
 			session.setAttribute("loggedInUser_email", email);
-			String message = "Vous êtes connectés! ";
+			String message = "Vous êtes connecté! ";
 			request.setAttribute("error", message);
-			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/connected.jsp");
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/connected.jsp");
 			//request.setAttribute("test", "coucou");
 			dispatcher.forward(request, response);
 		}else {
 			String message = "Vous n'êtes pas connectés";
 			request.setAttribute("error", message);
-			request.getRequestDispatcher("/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
 		}
 	}
 

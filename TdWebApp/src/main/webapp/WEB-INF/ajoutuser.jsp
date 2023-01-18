@@ -22,26 +22,37 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
-<title>sc2i</title>
+<title>Ajout User</title>
 </head>
 <body>
 
 	<main class="login-form">
 		<div class="topnav">
-			<a class="active" href="index2">Home</a>
-		</div>
+			<a class="active" href="index2">Home</a> <a href="add">Ajouter User</a> <a
+				href="liste">Liste Users</a> <a href="add2">Ajouter
+				Employee</a><a href="liste2">Liste Employees</a> <a href="about">About</a>
+			<form action="logout" method="post">
 
+				<button type="submit" class="btn btn-primary btndeco">Deconnection</button>
+				<br /> <br />
+
+
+			</form>
+		</div>
 	<br/>
 	
 		<div class="cotainer">
 			<div class="row justify-content-center">
 				<div class="col-md-8">
 					<div class="card">
-						<div class="card-header">S'inscrire <span style="color:red;font-size: 12px">${error}</span></div>
+						<div class="card-header">Ajout User </div>
 						<div class="card-body">
-							<form action="inscription" method="post">
+							<form action="add" method="post">
+								 <div class="textco" >${error}</div>
+									 <br/>
 								<div class="form-group row">
 								
+								<br/>
 									<label for="email_address"
 										class="col-md-4 col-form-label text-md-right">E-MailAddress</label>
 									<div class="col-md-6">
@@ -90,7 +101,7 @@
 
 								<div class="col-md-6 offset-md-6">
 									<button type="submit" class="btn btn-primary">
-										S'inscrire</button>
+										Ajouter</button>
 								</div>
 
 							</form>

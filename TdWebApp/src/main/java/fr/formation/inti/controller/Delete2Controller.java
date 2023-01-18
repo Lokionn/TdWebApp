@@ -48,14 +48,14 @@ public class Delete2Controller extends HttpServlet {
 				employeeService.delete(employee);
 				List<Employee> list = employeeService.findAll();
 				request.setAttribute("employees", list);
-				request.getServletContext().getRequestDispatcher("/liste2.jsp").forward(request, response);
+				request.getServletContext().getRequestDispatcher("/WEB-INF/liste2.jsp").forward(request, response);
 			}
 		} else {
 			
 		request.setAttribute("error", "Vous n'êtes pas connecté ! Faites les choses dans l'ordre :D!");
 
 		
-		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
+		RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
 		
 		dispatcher.forward(request, response);
 		}

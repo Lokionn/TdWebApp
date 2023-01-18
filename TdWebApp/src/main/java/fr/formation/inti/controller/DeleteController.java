@@ -56,14 +56,14 @@ public class DeleteController extends HttpServlet {
 
 					List<User> list = userService.findAll();
 					request.setAttribute("users", list);
-					request.getServletContext().getRequestDispatcher("/liste.jsp").forward(request, response);
+					request.getServletContext().getRequestDispatcher("/WEB-INF/liste.jsp").forward(request, response);
 				}
 			}
 		} else {
 
 			request.setAttribute("error", "Vous n'êtes pas connecté ! Faites les choses dans l'ordre :D!");
 
-			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/login.jsp");
+			RequestDispatcher dispatcher = request.getServletContext().getRequestDispatcher("/WEB-INF/login.jsp");
 
 			dispatcher.forward(request, response);
 		}
@@ -84,7 +84,7 @@ public class DeleteController extends HttpServlet {
 			userService.delete(user);
 			List<User> list = userService.findAll();
 			request.setAttribute("users", list);
-			request.getServletContext().getRequestDispatcher("/liste.jsp").forward(request, response);
+			request.getServletContext().getRequestDispatcher("/WEB-INF/liste.jsp").forward(request, response);
 		}
 
 		response.getWriter().append("User not found ").append(request.getContextPath());
